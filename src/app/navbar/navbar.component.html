@@ -1,0 +1,9 @@
+<header>
+  <img [routerLink]="['']" src="./assets/Marvel.svg" alt="Marvel logo">
+  <div class="search">
+      <form [formGroup]="form">
+          <input (keydown.enter)="onChange($event)" formControlName="search" type="text" name="search" id="search">
+          <span ><img src="./assets/search.png" alt="search" (click)="onClick()"></span>
+      </form>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+<article class="favorite">
+  <div class="favorite__img" [style.background-image]="'url('+favoriteComic.image+')'">
+      <span class="favorite__close"><img src="./assets/btn-delete.png" alt="Delete" (click)="onDelete(favoriteComic.id)"></span>
+  </div>
+  <div class="favorite__body">
+      <h5>{{ favoriteComic.title }}</h5>
+  </div>
+</article>

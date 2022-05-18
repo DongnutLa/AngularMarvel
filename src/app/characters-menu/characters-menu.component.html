@@ -1,0 +1,13 @@
+<div class="characters__menu">
+  <h3>Characters</h3>
+  <div class="filter">
+    <form [formGroup]="form">
+      <label for="filters"><p>Sort by</p></label>
+      <select formControlName="filters" name="filters" id="filter-id" (change)="changeOption($event)">
+        <option></option>
+        <option>Name</option>
+        <option>Creation date</option>
+      </select>
+    </form>
+  </div>
+</div>

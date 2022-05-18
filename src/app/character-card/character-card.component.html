@@ -1,0 +1,24 @@
+<article class="card">
+  <div class="card-body">
+      <div class="card-front">
+          <div
+            class="card__image"
+            [style.background-image]="'url('+image+')'">
+          </div>
+          <div class="card__title"><h3>{{ character.name }}</h3></div>
+          <div class="card__description"><p>{{ character.description }}</p></div>
+      </div>
+      <div class="card__related-comics">
+          <div
+            class="card__image"
+            [style.background-image]="'url('+image+')'"></div>
+          <h3>Related Comics</h3>
+          <ul>
+            <ng-container *ngFor="let comic of character.comics.items.slice(0,4)">
+              <li><p (click)="onOpenModal(comic)">{{ comic.name }}</p></li>
+            </ng-container>
+          </ul>
+      </div>
+  </div>
+  <button type="button" class="button btn-primary" [routerLink]="['character', character.id]"><span>View more</span></button>
+</article>

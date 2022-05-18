@@ -1,0 +1,68 @@
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(53, 53, 53, 0.178);
+  place-content: center;
+  display: none;
+  &.active {
+    display: flex;
+    z-index: 2;
+  }
+}
+.modal__body {
+  padding: 30px 30px 20px 20px;
+  min-width: 400px;
+  max-width: 600px;
+  height: 400px;
+  background-color: var(--lightBlue);
+  align-self: center;
+  border-radius: 12px;
+  position: relative;
+}
+.modal__card {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  gap: 20px;
+}
+.modal__img {
+  min-width: 200px;
+  height: 320px;
+  background: url('http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg') no-repeat center center/cover;
+  border-radius: 12px;
+}
+
+.modal__text {
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modal__text .comic-info {
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  -webkit-line-clamp: 10;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  text-align: justify;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal__body span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: medium;
+  transition: 0.3s;
+}
+.modal__body span:hover {
+  cursor: pointer;
+  color: var(--red);
+}

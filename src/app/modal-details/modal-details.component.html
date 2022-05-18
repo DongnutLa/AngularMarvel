@@ -1,0 +1,30 @@
+<div class="modal" [ngClass]="{'active': openModal}">
+  <div class="modal__body">
+      <span (click)="onCloseModal()">X</span>
+      <article class="modal__card">
+          <div class="modal__img"
+            [style.background-image]="'url('+image+')'">
+          </div>
+          <div class="modal__content">
+              <div class="modal__text">
+                  <div class="comic-title">
+                      <h3>{{ comicData.title }}</h3>
+                  </div>
+                  <div class="comic-info">
+                      <p>{{ comicData.description }}</p>
+                  </div>
+              </div>
+              <div class="modal__buttons">
+                  <ng-container *ngIf="comicOnFavs();else notOnFavs">
+                    <button class="button btn-primary" type="button" (click)="deleteFavorite(comicData.id)">Delete from favorites</button>
+                  </ng-container>
+                  <ng-template #notOnFavs>
+                    <button class="button btn-secondary" type="button" (click)="setFavorite(comicData.id, comicData.title, image)">Add to favorites</button>
+                  </ng-template>
+                  <button class="button btn-primary" type="button">Buy for $9.99</button>
+              </div>
+          </div>
+      </article>
+
+  </div>
+</div>

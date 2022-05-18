@@ -1,0 +1,28 @@
+<div class="character-container">
+  <div class="character-head">
+    <div class="character-head__data">
+      <div>
+        <div class="character-head__name"><h3>{{ characterData.name }}</h3></div>
+        <div class="character-head__description"><p>{{ characterData.description }}</p></div>
+      </div>
+      <div class="character-head__date"><p>Created {{ characterData.modified | dates }}</p></div>
+    </div>
+    <div
+      class="character-head__img"
+      [style.background-image]="'url('+image+')'"></div>
+  </div>
+  <div class="character-foot">
+    <div class="character-foot__comics">
+
+    </div>
+    <div class="character-foot__stories">
+
+    </div>
+    <div class="character-foot__series">
+
+    </div>
+    <div class="character-foot__events">
+
+    </div>
+  </div>
+</div>
