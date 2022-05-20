@@ -2,25 +2,55 @@
   <section class="characters">
     <app-characters-menu (orderBy)="orderBy($event)"></app-characters-menu>
     <div class="cards-container">
-      <app-character-card
-        *ngFor="let character of characters"
-        [character]="character"
-        (openModal)="onOpenModal($event)"></app-character-card>
+      <ng-container *ngIf="isLoading;else loaded">
+        <app-character-card-loader *ngFor="let item of [1, 2, 3, 4]"></app-character-card-loader>
+      </ng-container>
+      <ng-template #loaded>
+        <app-character-card
+          *ngFor="let character of characters"
+          [character]="character"
+          (openModal)="onOpenModal($event)">
+        </app-character-card>
+      </ng-template>
     </div>
     <div class="pagination">
       <button type="button"
         [disabled]="params.offset == 0"
+        class="button btn-secondary"
+        (click)="firstPage()">FirstPage
+      </button>
+
+      <button type="button"
+        [disabled]="params.offset == 0"
         class="button btn-primary"
-        (click)="previousPage()">Previous</button>
+        (click)="previousPage()">Previous
+      </button>
+
+      <ng-container *ngFor="let page of pagesToShow; let i = index">
+        <p
+          (click)="goToPage(page, (page/10)+1)"
+          class="pages page-{{ page/10 }}"
+          [ngClass]="{'active': actualPage===(page/10)+1}">{{(page/10)+1}}
+        </p>
+      </ng-container>
+
       <button
         [disabled]="params.offset == maxLimit"
         type="button"
         class="button btn-primary"
-        (click)="nextPage()">Next</button>
+        (click)="nextPage()">Next
+      </button>
+
+      <button type="button"
+        [disabled]="params.offset == maxLimit"
+        class="button btn-secondary"
+        (click)="lastPage()">LastPage
+      </button>
+
     </div>
   </section>
   <section class="favorites">
-    <h3>My favourites</h3>
+    <h3>My favorites</h3>
     <div class="fav-container">
       <app-favorite-card
         *ngFor="let fav of favoriteComics"

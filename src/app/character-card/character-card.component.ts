@@ -16,6 +16,9 @@ export class CharacterCardComponent implements OnInit {
 
   @Input() set character(character: CharacterModel) {
     if(character) {
+      if (character.description === '') {
+        character.description = 'There is no available description';
+      }
       this._character = character;
       this.image = `${character.thumbnail.path}.${character.thumbnail.extension}`
     }

@@ -13,16 +13,40 @@
   </div>
   <div class="character-foot">
     <div class="character-foot__comics">
-
-    </div>
-    <div class="character-foot__stories">
-
+      <h2>Comics</h2>
+      <div class="foot-item-container">
+        <div *ngFor="let comic of comicsForCharacter" class="foot-card">
+          <img src="{{ comic.thumbnail.path +'.'+ comic.thumbnail.extension }}" alt="">
+          <p>{{ comic.title }}</p>
+        </div>
+      </div>
     </div>
     <div class="character-foot__series">
-
+      <h2>Series</h2>
+      <div class="foot-item-container">
+        <div *ngFor="let series of seriesForCharacter" class="foot-card">
+          <img *ngIf="series.thumbnail" src="{{ series.thumbnail.path +'.'+ series.thumbnail.extension }}" alt="">
+          <p>{{ series.title }}</p>
+        </div>
+      </div>
     </div>
     <div class="character-foot__events">
-
+      <h2>Events</h2>
+      <div class="foot-item-container">
+        <div *ngFor="let event of eventsForCharacter" class="foot-card">
+          <img *ngIf="event.thumbnail" src="{{ event.thumbnail.path +'.'+ event.thumbnail.extension }}" alt="">
+          <p>{{ event.title }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="character-foot__stories">
+      <h2>Stories</h2>
+      <div class="foot-item-container" *ngIf="storiesForCharacter.length > 0">
+        <div *ngFor="let story of storiesForCharacter" class="foot-card">
+          <img *ngIf="story.thumbnail" src="{{ story.thumbnail.path +'.'+ story.thumbnail.extension }}" alt="">
+          <p>{{ story.title }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

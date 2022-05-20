@@ -41,32 +41,43 @@ export class CharacterDetailsComponent implements OnInit {
 
   getCharacterData() {
     this.marvelService.getCharacterById(this.characterId).subscribe(res => {
+      if (res.data.results[0].description === '' || !res.data.results[0].description) {
+        res.data.results[0].description = 'There is no description available';
+      }
       this.characterData = res.data.results[0];
-      this.image = `${this.characterData.thumbnail.path}.${this.characterData.thumbnail.extension}`
+      this.image = `${this.characterData.thumbnail.path}.${this.characterData.thumbnail.extension}`;
     })
   }
 
   getComics() {
     this.marvelService.getComicByCharacter(this.characterId).subscribe(res => {
-      this.comicsForCharacter = res.data.results;
+      res.data.results.sort(() => 0.5 - Math.random());
+      let comics = res.data.results.filter(s => s.thumbnail !== null);
+      this.comicsForCharacter = comics;
     })
   }
 
   getStories() {
     this.marvelService.getStoriesByCharacter(this.characterId).subscribe(res => {
-      this.storiesForCharacter = res.data.results;
+      res.data.results.sort(() => 0.5 - Math.random());
+      let stories = res.data.results.filter(s => s.thumbnail !== null);
+      this.storiesForCharacter = stories;
     })
   }
 
   getSeries() {
     this.marvelService.getSeriesByCharacter(this.characterId).subscribe(res => {
-      this.seriesForCharacter = res.data.results;
+      res.data.results.sort(() => 0.5 - Math.random());
+      let series = res.data.results.filter(s => s.thumbnail !== null);
+      this.seriesForCharacter = series;
     })
   }
 
   getEvents() {
     this.marvelService.getEventsByCharacter(this.characterId).subscribe(res => {
-      this.eventsForCharacter = res.data.results;
+      res.data.results.sort(() => 0.5 - Math.random());
+      let events = res.data.results.filter(s => s.thumbnail !== null);
+      this.eventsForCharacter = events;
     })
   }
 }

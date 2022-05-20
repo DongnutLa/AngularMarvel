@@ -25,3 +25,21 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.pagination {
+  display: flex;
+  place-items: center;
+  gap: 10px;
+}
+.pages {
+  cursor: pointer;
+  &.active {
+    color: var(--red);
+    cursor: default;
+  }
+}
+@for $i from 0 through 156 {
+  .page-#{$i}.pages:hover {
+    color: var(--red);
+  }
+}

@@ -19,19 +19,9 @@ export class CharactersMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeOption(e: any) {
-    console.log(e.target.value);
-    switch (e.target.value) {
-      case 'Name':
-        this.orderBy.emit('name');
-        break;
-      case 'Creation date':
-        this.orderBy.emit('modified');
-        break;
-      default:
-        this.orderBy.emit('');
-        break;
-    }
+  changeOption() {
+    const value = this.form.controls['filters'].value;
+    this.orderBy.emit(value);
   }
 
 }

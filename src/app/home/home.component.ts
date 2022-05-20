@@ -21,6 +21,11 @@ export class HomeComponent implements OnInit {
   favoriteComics: Array<FavoriteComic> = [];
   service: any;
   maxLimit: number = 1560;
+  isLoading: boolean = true;
+  totalPages: number = 0;
+  actualPage: number = 1;
+  pages = new Array<number>();
+  pagesToShow = new Array<number>();
 
   constructor(
     private marvelService: MarvelService,
@@ -42,19 +47,65 @@ export class HomeComponent implements OnInit {
   }
 
   getCharacters() {
-    this.marvelService.getCharacters(this.params).subscribe(res => {
-      this.characters = res.data.results;
-      this.maxLimit = res.data.total - (res.data.total % 10);
+    this.isLoading = true;
+    window.scroll(0,0);
+    this.characters = new Array<CharacterModel>();
+    this.marvelService.getCharacters(this.params).subscribe({
+      next: (res) => {
+        this.characters = res.data.results;
+        this.maxLimit = res.data.total - (res.data.total % 10);
+        this.totalPages = Math.ceil(res.data.total / 10);
+        this.pages = Array.from({length: this.totalPages}, (_, i) => i*10)
+        this.updatePagination();
+  },
+      error: (err) => { this.isLoading = false },
+      complete: () => {
+        this.isLoading = false;
+      }
     })
+  }
+
+  goToPage(page: number, actual: number) {
+    if(this.actualPage !== actual){
+      this.params.offset = page;
+      this.getCharacters();
+      this.actualPage = actual;
+    }
   }
 
   nextPage() {
     this.params.offset += this.params.limit;
+    this.actualPage++;
     this.getCharacters();
   }
 
   previousPage() {
     this.params.offset -= this.params.limit;
+    this.actualPage--;
+    this.getCharacters();
+  }
+
+  updatePagination() {
+    if (this.actualPage <= 6) this.pagesToShow = this.pages.slice(0,10);
+
+    if(this.actualPage >= this.totalPages-3) {
+      this.pagesToShow = this.pages.slice(this.totalPages-10,this.totalPages+1);
+    }
+
+    if(this.pages.length > 10 && this.actualPage > 6 && this.actualPage < this.totalPages-3) {
+      this.pagesToShow = this.pages.slice(0+(this.actualPage-6),10+(this.actualPage-6))
+    }
+  }
+
+  firstPage() {
+    this.params.offset = 0;
+    this.actualPage = 1;
+    this.getCharacters();
+  }
+
+  lastPage() {
+    this.params.offset = this.maxLimit;
+    this.actualPage = this.totalPages;
     this.getCharacters();
   }
 

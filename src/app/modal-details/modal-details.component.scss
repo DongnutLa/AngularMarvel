@@ -40,6 +40,9 @@
   flex-direction: column;
   gap: 20px;
 }
+.modal__text .comic-title {
+  text-align: center;
+}
 .modal__text .comic-info {
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;

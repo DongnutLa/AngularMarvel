@@ -13,6 +13,8 @@ import { FavoriteCardComponent } from './favorite-card/favorite-card.component';
 import { ModalDetailsComponent } from './modal-details/modal-details.component';
 import { CharacterDetailsComponent } from './character-details/character-details.component';
 import { DatesPipe } from './pipes/dates.pipe';
+import { CharacterCardLoaderComponent } from './character-card-loader/character-card-loader.component';
+import { ModalDetailsLoaderComponent } from './modal-details-loader/modal-details-loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DatesPipe } from './pipes/dates.pipe';
     ModalDetailsComponent,
     CharacterDetailsComponent,
     DatesPipe,
+    CharacterCardLoaderComponent,
+    ModalDetailsLoaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -44,6 +44,10 @@ cursor:not-allowed;
   color: var(--lightBlue);
   cursor: pointer;
   transform: scale(0.9);
+  &:disabled {
+    background-color: var(--lightBlue);
+    color: var(--red);
+  }
 }
 
 .button:disabled {

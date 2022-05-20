@@ -1,0 +1,24 @@
+:host {
+  min-width: 500px;
+  max-width: 600px;
+}
+.ph-item {
+  min-width: 500px;
+  max-width: 600px;
+  padding: 0;
+  background-color: var(--aliceBlue);
+}
+.ph-picture {
+  height: 320px;
+}
+.ph-col-4 {
+  padding: 0 8px 0 0;
+}
+.ph-col-8 {
+  padding-top: 12px;
+}
+.ph-col-12.big {
+  height: 30px;
+  margin-bottom: 20px;
+}
+

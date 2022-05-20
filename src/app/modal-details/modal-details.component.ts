@@ -15,6 +15,7 @@ export class ModalDetailsComponent implements OnInit, OnChanges {
   private _comic: GenericItemModel = new GenericItemModel();
   comicData: ComicModel = new ComicModel();
   image: string = '';
+  isLoading: boolean = true;
 
   @Input() set openModal(openModal: boolean) {
     this._openModal = openModal;
@@ -54,11 +55,19 @@ export class ModalDetailsComponent implements OnInit, OnChanges {
   }
 
   getComicData(comicId: number) {
-    this.marvelService.getComicById(comicId).subscribe(res => {
-      if(res && res.data && res.data.results.length > 0) {
-        this.comicData = res.data.results[0];
-        this.image = `${this.comicData.thumbnail.path}.${this.comicData.thumbnail.extension}`
-      }
+    this.isLoading = true;
+    this.marvelService.getComicById(comicId).subscribe({
+      next: (res) => {
+        if(res && res.data && res.data.results.length > 0) {
+          if(res.data.results[0].description === '' || !res.data.results[0].description) {
+            res.data.results[0].description = 'There is no description available';
+          }
+          this.comicData = res.data.results[0];
+          this.image = `${this.comicData.thumbnail.path}.${this.comicData.thumbnail.extension}`
+        }
+      },
+      error: (err) => { this.isLoading = false },
+      complete: () => { this.isLoading = false }
     })
   }
 

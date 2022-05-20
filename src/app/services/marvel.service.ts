@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Params, ResponseModel } from '../models/base.model';
 import { CharacterModel } from '../models/character.model';
-import { HttpClient } from '@angular/common/http';
 import { ComicModel } from '../models/comic.model';
 import { StoryModel } from '../models/story.model';
 import { SerieModel } from '../models/serie.model';
@@ -13,12 +14,11 @@ import { EventModel } from '../models/event.model';
 })
 
 export class MarvelService {
-
-  private _uri = 'https://gateway.marvel.com:443/v1/public';
   private ts = 'ts=1';
-  private apikey = 'apikey=559bcac0f8a2ea2a025f00ff73eb372c';
-  private hash = 'hash=1f2d605202fe0b0aa3810c5ac4bd251f';
-  private keys = `?${this.ts}&${this.apikey}&${this.hash}`
+  private _uri = environment.apiUrl;
+  private apikey = environment.apiKey;
+  private hash = environment.hash;
+  private keys = `?${this.ts}&${this.apikey}&${this.hash}`;
 
   constructor(private http: HttpClient) { }
 

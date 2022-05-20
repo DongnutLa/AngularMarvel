@@ -3,10 +3,12 @@
   <div class="filter">
     <form [formGroup]="form">
       <label for="filters"><p>Sort by</p></label>
-      <select formControlName="filters" name="filters" id="filter-id" (change)="changeOption($event)">
-        <option></option>
-        <option>Name</option>
-        <option>Creation date</option>
+      <select formControlName="filters" name="filters" id="filter-id" (change)="changeOption()">
+        <option value=""></option>
+        <option value="name">Name (A-Z)</option>
+        <option value="-name">Name (Z-A)</option>
+        <option value="modified">Date (Des)</option>
+        <option value="-modified">Date (Asc)</option>
       </select>
     </form>
   </div>
