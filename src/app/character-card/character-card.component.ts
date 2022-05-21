@@ -19,6 +19,7 @@ export class CharacterCardComponent implements OnInit {
       if (character.description === '') {
         character.description = 'There is no available description';
       }
+      character.comics.items = character.comics.items.sort(() => 0.5 - Math.random())
       this._character = character;
       this.image = `${character.thumbnail.path}.${character.thumbnail.extension}`
     }

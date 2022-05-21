@@ -73,7 +73,8 @@ export class ModalDetailsComponent implements OnInit, OnChanges {
 
   comicOnFavs(): boolean {
     const comicsOnStorage = this.localStorage.getData();
-    return comicsOnStorage.some((comic: any) => comic.id === this.comicData.id);
+    if(comicsOnStorage) return comicsOnStorage.some((comic: any) => comic.id === this.comicData.id);
+    return false;
   }
 
   setFavorite(id: number, title: string, image: string) {
