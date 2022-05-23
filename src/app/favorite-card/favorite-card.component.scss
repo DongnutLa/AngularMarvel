@@ -19,6 +19,8 @@
   background: url('http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg') no-repeat center center/cover;
   border-radius: 12px;
   transition: 0.3s;
+  -webkit-box-shadow: 3px 3px 25px 3px rgba(39, 39, 39, 0.31);
+  box-shadow: 3px 3px 25px 3px rgba(39, 39, 39, 0.31);
 }
 .favorite:hover .favorite__img {
   opacity: 0.8;

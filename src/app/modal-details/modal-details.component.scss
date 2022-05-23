@@ -3,11 +3,12 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  background-color: rgba(53, 53, 53, 0.178);
+  background-color: rgba(53, 53, 53, 0.445);
   place-content: center;
-  display: none;
+  display: flex;
+  visibility: hidden;
   &.active {
-    display: flex;
+    visibility: visible;
     z-index: 2;
   }
 }
@@ -20,6 +21,14 @@
   align-self: center;
   border-radius: 12px;
   position: relative;
+  -webkit-box-shadow: 3px 5px 25px 5px rgba(0,0,0,0.31);
+  box-shadow: 3px 5px 25px 5px rgba(0,0,0,0.31);
+  transform: scale(0);
+  animation: drop 0.5s ease forwards;
+}
+@keyframes drop {
+  0% { opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
 }
 .modal__card {
   width: 100%;

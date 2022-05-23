@@ -11,6 +11,8 @@
   transition: transform 0.8s;
   transform-style: preserve-3d;
   border-radius: 8px;
+  -webkit-box-shadow: 3px 5px 25px 5px rgba(0,0,0,0.31);
+  box-shadow: 3px 5px 25px 5px rgba(0,0,0,0.31);
 }
 
 .card:hover .card-body {
