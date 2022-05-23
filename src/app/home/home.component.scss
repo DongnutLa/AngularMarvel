@@ -1,4 +1,5 @@
 .characters {
+  justify-self: center;
   display: flex;
   flex-direction: column;
   height: 396px;
@@ -18,6 +19,29 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+@media (max-width: 1045px) {
+  .cards-container {
+    max-width: 400px;
+  }
+}
+@media (max-width: 800px) {
+  .characters {
+    max-width: 450px;
+  }
+  .pagination {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 670px) {
+  .favorites {
+    visibility: hidden;
+  }
+}
+@media (max-width: 400px) {
+  .pagination {
+    transform: scale(0.7);
+  }
 }
 
 .fav-container {
