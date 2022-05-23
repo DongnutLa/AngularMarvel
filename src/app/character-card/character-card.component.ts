@@ -17,7 +17,11 @@ export class CharacterCardComponent implements OnInit {
   @Input() set character(character: CharacterModel) {
     if(character) {
       if (character.description === '') {
-        character.description = 'There is no available description';
+        character.description = 'There is no description available';
+      }
+      if(character.comics.items.length === 0) {
+        character.comics.items.push(new GenericItemModel)
+        character.comics.items[0].name = 'There is no related comics available';
       }
       character.comics.items = character.comics.items.sort(() => 0.5 - Math.random())
       this._character = character;
